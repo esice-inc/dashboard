@@ -1,5 +1,5 @@
 import React from 'react';
-import 'semantic-ui-css/semantic.css';
+
 import logo from './logo.svg';
 import './App.css';
 
