@@ -11,7 +11,7 @@ const gridContainerStyle = {
 const gridStyle = {
   margin: 0,
   height: '100%',
-  minWidth: '1200px',
+  minWidth: '900px',
 };
 
 const columnStyle = {

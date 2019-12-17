@@ -6,21 +6,31 @@ import 'semantic-ui-css/semantic.css';
 
 import API from './api';
 import store from './store';
-import SalesDashboard from './pages/sales/SalesDashboard';
+import OrdersDashboard from './pages/sales/OrdersDashboard';
+import PaymentsDashboard from './pages/sales/PaymentsDashboard';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-const sales = (props) => {
+const orders = (props) => {
   return (
     <Provider store={store}>
-      <SalesDashboard {...props} />
+      <OrdersDashboard {...props} />
+    </Provider>
+  );
+};
+
+const payments = (props) => {
+  return (
+    <Provider store={store}>
+      <PaymentsDashboard {...props} />
     </Provider>
   );
 };
 
 ReactDOM.render(
   <Router>
-    <Route path="/sales" render={sales}/>
+    <Route path="/orders" render={orders}/>
+    <Route path="/payments" render={payments}/>
     <Route />
   </Router>,
   document.getElementById('root')

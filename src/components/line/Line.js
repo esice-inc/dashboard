@@ -25,16 +25,18 @@ const lineStyle =  {
   height: '100%',
 };
 
-const Line = (props) => (
-  <div style={ lineStyle }>
-    <h3 className="ui header" style={ headerStyle } >{ props.name }</h3>
-    <div className="ui segment line" style={ containerStyle }>
-      {
-        props.sales.map(sale => (<Card {...sale} />))
-      }
+const Line = ({ name, cards, children }) => {
+  return (
+    <div style={ lineStyle }>
+      <h3 className="ui header" style={headerStyle}>
+        { name }
+      </h3>
+      <div className="ui segment line" style={containerStyle}>
+        { children }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 
 export default Line;

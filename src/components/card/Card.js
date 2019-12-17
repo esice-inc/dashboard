@@ -15,40 +15,27 @@ const cardStyle = {
 // Fijar tamanio en descripcion de card
 // Rows con iconos!!!
 
-const Card = (props) => (
-  <div className="ui card" style={ cardStyle }>
-    <div className="content">
-      <img className="right floated mini ui image" src="/images/avatar/elliot.jpg" />
-      <div className="header">
-      { props.title }
+// Show complete history of card
+// Should this have identifier? or the 'purchase order id' will be enough
+const Card = ({ header, subheader, content, children }) => {
+  return (
+    <div className="ui card" style={ cardStyle }>
+      <div className="content">
+        <img className="right floated mini ui image" src="/images/avatar/elliot.jpg" />
+        <div className="header">
+        { header }
+        </div>
+        <div className="meta">
+          { subheader }
+        </div>
+        <div className="description">
+          { content }
+        </div>
       </div>
-      <div className="meta">
-        { props.customer }
-      </div>
-      <div className="description">
-        { props.description }
-      </div>
+      { children }
     </div>
-    <div className="extra content">
-      <span className="right floated">
-        { props.rows[0].right }
-      </span>
-      <span>
-        <i className="puzzle piece icon"></i>
-        { props.rows[0].left }
-      </span>
-    </div>
-    <div className="extra content">
-      <span className="right floated">
-        { props.rows[1].right }
-      </span>
-      <span>
-        <i className="box icon"></i>
-        { props.rows[1].left }
-      </span>
-    </div>
-  </div>
-);
+  );
+};
 
 
 export default Card;

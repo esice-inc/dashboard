@@ -18,9 +18,11 @@ const mapStateToHeaderProps = (state) => {
 
   return { branch, barista };
     */
+
+  return {};
 };
 
-const mapDispatchToHeaderProps = (dispatch) => {};
+const mapDispatchToHeaderProps = (dispatch) => ({});
   // bindActionCreators({ loadBranch, loadBarista }, dispatch);
 
 export default connect(

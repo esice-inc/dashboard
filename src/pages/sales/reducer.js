@@ -1,30 +1,53 @@
 import { combineReducers } from 'redux';
 
-const quotations = [];
-const orders = [];
-const deliveries = [];
+const requirements = {};
+const workOrders = {};
+const deliveries = {};
 
 const actions = {
-  SET_QUOTATIONS: 'SET_QUOTATIONS',
-  SET_ORDERS: 'SET_ORDERS',
-  SET_DELIVERIES: 'SET_DELIVERIES',
-  START_LOAD: 'START_LOAD',
-  END_LOAD: 'END_LOAD',
+  UPDATE_REQUIREMENTS: 'UPDATE_REQUIREMENTS',
+  START_REQUIREMENTS_LOAD: 'START_REQUIREMENTS_LOAD',
+  END_REQUIREMENTS_LOAD: 'END_REQUIREMENTSLOAD',
+
+  UPDATE_WORK_ORDERS: 'UPDATE_WORK_ORDERS',
+  START_WORK_ORDERS_LOAD: 'START_WORK_ORDERS_LOAD',
+  END_WORK_ORDERS_LOAD: 'END_WORK_ORDERS_LOAD',
+
+  UPDATE_DELIVERIES: 'UPDATE_DELIVERIES',
+  START_DELIVIERIES_LOAD: 'START_DELIVIERIESLOAD',
+  END_DELIVIERIES_LOAD: 'END_DELIVIERIES_LOAD',
 };
 
-function quotationsReducer(state = quotations, action) {
+function updateCards(prevState, cards) {
+  const cardReducer = (newState, card) => {
+    const prevCard = prevState[card.id];
+
+    if (JSON.stringify(prevCard) !== JSON.stringify(card)) {
+      newState[card.id] = card;
+    }  else {
+      newState[card.id] = prevCard;
+    }
+
+    return newState;
+  }
+
+  return Object.values(cards)
+    .reduce(cardReducer, {});
+}
+
+function requirementsReducer(state = requirements, action) {
   switch(action.type) {
-    case actions.SET_QUOTATIONS:
-      return action.quotations;
+    case actions.UPDATE_REQUIREMENTS:
+      return updateCards(state, action.requirements);
     default:
       return state;
   }
 }
 
-function ordersReducer(state = orders, action) {
+function workOrdersReducer(state = workOrders, action) {
   switch(action.type) {
-    case actions.SET_ORDERS:
-      return action.orders;
+    case actions.UPDATE_WORK_ORDERS:
+      return updateCards(state, action.workOrders);
     default:
       return state;
   }
@@ -32,8 +55,8 @@ function ordersReducer(state = orders, action) {
 
 function deliveriesReducer(state = deliveries, action) {
   switch(action.type) {
-    case actions.SET_DELIVERIES:
-      return action.deliveries;
+    case actions.UPDATE_DELIVERIES:
+      return updateCards(state, action.deliveries);
     default:
       return state;
   }
@@ -51,9 +74,9 @@ function loadingReducer(state = null, action) {
 }
 
 const reducer = combineReducers({
-  isLoading: loadingReducer,
-  quotations: quotationsReducer,
-  orders: ordersReducer,
+  // isLoading: loadingReducer,
+  requirements: requirementsReducer,
+  workOrders: workOrdersReducer,
   deliveries: deliveriesReducer,
 });
 
@@ -62,5 +85,4 @@ export {
   reducer,
   actions
 };
-
 

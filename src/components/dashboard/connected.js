@@ -18,9 +18,10 @@ const mapStateToDashboardProps = (state) => {
 
   return { branch, barista };
     */
+  return {};
 };
 
-const mapDispatchToDashboardProps = (dispatch) => {};
+const mapDispatchToDashboardProps = (dispatch) => ({});
   // bindActionCreators({ loadBranch, loadBarista }, dispatch);
 
 export default connect(

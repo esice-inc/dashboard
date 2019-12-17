@@ -12,20 +12,20 @@ const gridContainerStyle = {
 const gridStyle = {
   margin: 0,
   height: '100%',
-  minWidth: '1200px',
+  minWidth: '900px',
 };
 
 const columnStyle = {
   height: '100%',
 };
 
-const Dashboard = (props) => (
+const Dashboard = ({ children }) => (
   <div style={ gridContainerStyle }>
     <div className='ui centered grid' style={ gridStyle }>
       {
-        props.lines.map(line => (
+        React.Children.map(children, (line) => (
           <div className='four wide column' style={ columnStyle }>
-            <Line {...line} />
+            { line }
           </div>
         ))
       }

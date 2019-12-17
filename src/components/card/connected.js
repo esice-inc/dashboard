@@ -18,9 +18,10 @@ const mapStateToCardProps = (state) => {
 
   return { branch, barista };
     */
+  return {};
 };
 
-const mapDispatchToCardProps = (dispatch) => {}
+const mapDispatchToCardProps = (dispatch) => ({});
   // bindActionCreators({ loadBranch, loadBarista }, dispatch);
 
 export default connect(
