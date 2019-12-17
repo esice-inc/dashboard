@@ -9,9 +9,10 @@ import CardRow from './CardRow';
 //  - Fecha de inicio de trabajo -> Tiempo trabajando
 //  - Interna o Externa
 const WorkOrderCard = ({
-  id, productId, customerId, description, workerId, status, orderType,
-  creationTime, estimatedWorkTime, purchaseOrderId, loadProduct, loadCustomer,
-  update,
+  id, saleId, productId, customerId, description, workerId, status, orderType,
+  estimatedWorkTime, purchaseOrderId, creationTime, 
+  loadProduct, loadCustomer, update,
+  isSelected, setSelectedCard,
 }) => {
   const [productName, _setProductName] = React.useState('[product]');
   const [customerName, _setCustomerName] = React.useState('[customer]');
@@ -34,6 +35,8 @@ const WorkOrderCard = ({
       header={productName}
       subheader={customerName}
       content={description}
+      isSelected={isSelected}
+      onClick={() => setSelectedCard({ saleId })}
     >
       <CardRow
         leftContent={workerName}

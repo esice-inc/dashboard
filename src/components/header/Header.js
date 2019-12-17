@@ -5,12 +5,11 @@ import './Header.css';
 
 const gridContainerStyle = {
   flex: '1 0 auto',
-  height: '80px',
+  background: '#f9fafb',
 };
 
 const gridStyle = {
   margin: 0,
-  height: '100%',
   minWidth: '900px',
 };
 
@@ -22,32 +21,28 @@ const Header = (props) => (
   <div style={ gridContainerStyle }>
     <div className='ui centered grid' style={ gridStyle }>
       <div className='four wide column' style={ columnStyle }>
-        <h1 className='ui left huge header' style={{ fontSize: '4em' }}>Ventas</h1>
+        <h1 className='ui floated left header' style={{ margin: 0, padding: '0.1em 1em 0.1em 0 ' }}>
+          Ventas
+        </h1>
+        <span
+          style={{
+            padding: '0.8em',
+            float: 'left',
+            fontSize: '1em',
+            height: '135%',
+            background: 'white',
+            borderTop: '1px solid rgba(208, 212, 216, 0.2)',
+            borderLeft: '1px solid rgba(208, 212, 216, 0.2)',
+            borderRight: '1px solid rgba(208, 212, 216, 0.2)',
+          }}
+        >
+          Ordenes
+        </span>
+        <span style={{ padding: '0.8em', float: 'left', fontSize: '1em' }}>
+          Pagos
+        </span>
       </div>
-      <div className='four wide column' style={ columnStyle }>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/elliot.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/stevie.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/helen.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/daniel.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/steve.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/elliot.jpg'/>
-        </a>
-        <a className='ui circular label' style={{ padding: '0 !important' }}>
-          <img className='ui avatar image' style={{ margin: 0}} src='/images/avatar/stevie.jpg'/>
-        </a>
-      </div>
-      <div className='four wide column' style={ columnStyle }>
+      <div className='eight wide column' style={ columnStyle }>
         <div className="ui large icon input" style={{ width: '100%' }}>
           <input type="text" placeholder="Search..." />
           <i className="search icon"></i>

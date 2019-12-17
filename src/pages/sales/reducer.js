@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 const requirements = {};
 const workOrders = {};
 const deliveries = {};
+const selectedCard = {};
 
 const actions = {
   UPDATE_REQUIREMENTS: 'UPDATE_REQUIREMENTS',
@@ -23,7 +24,7 @@ function updateCards(prevState, cards) {
     const prevCard = prevState[card.id];
 
     if (JSON.stringify(prevCard) !== JSON.stringify(card)) {
-      newState[card.id] = card;
+      newState[card.id] = {...card};
     }  else {
       newState[card.id] = prevCard;
     }
@@ -73,11 +74,21 @@ function loadingReducer(state = null, action) {
   }
 }
 
+function selectedCardReducer(state = selectedCard, action) {
+  switch(action.type) {
+    case actions.UPDATE_CARD:
+      return {...action.selectedCard};
+    default:
+      return state;
+  }
+}
+
 const reducer = combineReducers({
   // isLoading: loadingReducer,
   requirements: requirementsReducer,
   workOrders: workOrdersReducer,
   deliveries: deliveriesReducer,
+  selectedCard: selectedCardReducer,
 });
 
 

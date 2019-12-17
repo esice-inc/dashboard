@@ -7,9 +7,10 @@ import CardRow from './CardRow';
 //  - Receptor
 //  - Fecha de entrega
 const DeliveryCard = ({
-  id, productId, customerId, description, workerId, status, dateOfDelivery,
-  creationTime, purchaseOrderId, loadProduct, loadCustomer,
-  update,
+  id, saleId, productId, customerId, description, workerId, status,
+  dateOfDelivery, purchaseOrderId, creationTime,
+  loadProduct, loadCustomer, update,
+  isSelected, setSelectedCard,
 }) => {
   const [productName, _setProductName] = React.useState('[product]');
   const [customerName, _setCustomerName] = React.useState('[customer]');
@@ -31,6 +32,8 @@ const DeliveryCard = ({
       header={productName}
       subheader={customerName}
       content={description}
+      isSelected={isSelected}
+      onClick={() => setSelectedCard({ saleId })}
     >
       <CardRow
         leftContent={workerName}

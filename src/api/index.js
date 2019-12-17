@@ -48,5 +48,6 @@ class Singleton {
   }
 }
 
+console.log(document.cookie);
 
 export default Singleton;

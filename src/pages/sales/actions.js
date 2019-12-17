@@ -7,6 +7,7 @@ export const loadRequirements = ({ dispatch }) => {
   const requirements = [
     {
       id: '1',
+      saleId: 'REQ-1',
       product: 'Resorte Compresion 3/8"',
       customer: 'Procter & Gamble',
       description: 'Resorte de compresion 3/8" para soporte preliminar en hoja de aluminio. Se espera que soporte hasta 50kg encima. Color: Rojo',
@@ -14,9 +15,11 @@ export const loadRequirements = ({ dispatch }) => {
       numberOfPieces: '17',
       creationTime: '2 hours ago',
       deliveryTime: '15',
+      purchaseOrderId: 'AE234121',
     },
     {
       id: '2',
+      saleId: 'REQ-2',
       product: 'O\'ring 16/8"',
       customer: 'Hella',
       description: 'Un simple O\'ring locochon',
@@ -24,9 +27,11 @@ export const loadRequirements = ({ dispatch }) => {
       numberOfPieces: '5',
       creationTime: '1 hours ago',
       deliveryTime: '13',
+      purchaseOrderId: '937912',
     },
     {
       id: '3',
+      saleId: 'REQ-3',
       product: 'Placa de asbesto',
       customer: 'Refrigeración Nieto',
       description: 'Placa de 2 x 10 para recubrimiento de tapa',
@@ -34,6 +39,7 @@ export const loadRequirements = ({ dispatch }) => {
       numberOfPieces: '1',
       creationTime: '6 hours ago',
       deliveryTime: '1',
+      purchaseOrderId: '35',
     },
   ];
 
@@ -48,6 +54,7 @@ export const loadWorkOrders = ({ dispatch }) => {
   const workOrders = [
     {
       id: '1',
+      saleId: 'WRK-1',
       product: 'Forma Alambre S',
       customer: 'Tanok',
       description: 'Alambre en forma de S con final doblado hacia el interior',
@@ -58,6 +65,7 @@ export const loadWorkOrders = ({ dispatch }) => {
     },
     {
       id: '2',
+      saleId: 'WRK-2',
       product: 'Selladores alta fricción',
       customer: 'Procter & Gamble',
       description: 'Empaque sellador blanco para soportar doble fricción en recolección de sobres',
@@ -78,6 +86,7 @@ export const loadDeliveries = ({ dispatch }) => {
   const deliveries = [
     {
       id: '1',
+      saleId: 'DEL-1',
       product: 'Resorte tension inoxidable 1/8"',
       customer: 'Papel, Carton y Derivados',
       description: 'Resorte de tension 24 espiras',

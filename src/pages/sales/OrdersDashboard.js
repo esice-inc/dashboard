@@ -11,24 +11,27 @@ import { loadRequirements, loadWorkOrders, loadDeliveries } from './actions';
 import store from '../../store';
 import './OrdersDashboard.css'
 
-const RequirementsLine = ({}) => {
+const RequirementsLine = ({ selectedCard, setSelectedCard }) => {
   console.log('render');
   const cards = useSelector(store => store.orders.requirements, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
     () => {
       setTimeout(() => loadRequirements({ dispatch }), 1000);
+      // setTimeout(() => loadRequirements({ dispatch }), 3000);
     }
   );
   console.log('CARDS ->', cards);
 
   return (
-    <Line name={'Requerimientos'}>
+    <Line name={'Requerimientos'} onNew={() => { console.log(0) }}>
       {
         Object.values(cards)
           .map((card) => (
             <RequirementCard
               key={JSON.stringify(card)}
+              isSelected={selectedCard.saleId === card.saleId}
+              setSelectedCard={setSelectedCard}
               {...card}
             />
           ))
@@ -37,7 +40,7 @@ const RequirementsLine = ({}) => {
   );
 };
 
-const WorkOrdersLine = ({}) => {
+const WorkOrdersLine = ({ selectedCard, setSelectedCard }) => {
   const cards = useSelector(store => store.orders.workOrders, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
@@ -53,6 +56,8 @@ const WorkOrdersLine = ({}) => {
           .map((card) => (
             <WorkOrderCard
               key={JSON.stringify(card)}
+              isSelected={selectedCard.saleId === card.saleId}
+              setSelectedCard={setSelectedCard}
               {...card}
             />
           ))
@@ -61,7 +66,7 @@ const WorkOrdersLine = ({}) => {
   );
 };
 
-const DeliveriesLine = ({}) => {
+const DeliveriesLine = ({ selectedCard, setSelectedCard }) => {
   const cards = useSelector(store => store.orders.deliveries, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
@@ -77,6 +82,8 @@ const DeliveriesLine = ({}) => {
           .map((card) => (
             <DeliveryCard
               key={JSON.stringify(card)}
+              isSelected={selectedCard.saleId === card.saleId}
+              setSelectedCard={setSelectedCard}
               {...card}
             />
           ))
@@ -86,18 +93,21 @@ const DeliveriesLine = ({}) => {
 };
 
 const OrdersDashboard = ({}) => {
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const lineProps = { selectedCard, setSelectedCard };
+
   return (
     <>
       <Header />
       <div
         className="ui clearing divider"
-        style={{boderTop: 'rgba(208, 212, 216, 0.15)'}}
+        style={{boderTop: 'rgba(208, 212, 216, 0.15)', margin: 0 }}
       >
       </div>
       <Dashboard>
-        <RequirementsLine />
-        <WorkOrdersLine />
-        <DeliveriesLine />
+        <RequirementsLine {...lineProps} />
+        <WorkOrdersLine {...lineProps} />
+        <DeliveriesLine {...lineProps} />
       </Dashboard>
     </>
   );

@@ -14,9 +14,9 @@ const containerStyle = {
 
 const headerStyle = {
   paddingLeft: '0.5rem',
-  flex: '1 0 auto',
   margin: 0,
-  maxHeight: '2rem',
+  // maxHeight: '2rem',
+  display: 'inline-block',
 };
 
 const lineStyle =  {
@@ -25,12 +25,25 @@ const lineStyle =  {
   height: '100%',
 };
 
-const Line = ({ name, cards, children }) => {
+const Line = ({ name, cards, onNew, children }) => {
   return (
     <div style={ lineStyle }>
-      <h3 className="ui header" style={headerStyle}>
-        { name }
-      </h3>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}
+      >
+        <h3 className="ui header" style={headerStyle}>
+          { name }
+        </h3>
+        {
+          onNew && <button onClick={onNew} style={{ cursor: 'pointer' }}>
+            +
+          </button>
+        }
+      </div>
       <div className="ui segment line" style={containerStyle}>
         { children }
       </div>
