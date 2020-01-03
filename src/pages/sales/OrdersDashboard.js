@@ -13,7 +13,7 @@ import './OrdersDashboard.css'
 
 const RequirementsLine = ({ selectedCard, setSelectedCard }) => {
   console.log('render');
-  const cards = useSelector(store => store.orders.requirements, shallowEqual);
+  const cards = useSelector(store => store.sales.orders.requirements, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
     () => {
@@ -41,7 +41,7 @@ const RequirementsLine = ({ selectedCard, setSelectedCard }) => {
 };
 
 const WorkOrdersLine = ({ selectedCard, setSelectedCard }) => {
-  const cards = useSelector(store => store.orders.workOrders, shallowEqual);
+  const cards = useSelector(store => store.sales.orders.workOrders, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
     () => {
@@ -67,7 +67,7 @@ const WorkOrdersLine = ({ selectedCard, setSelectedCard }) => {
 };
 
 const DeliveriesLine = ({ selectedCard, setSelectedCard }) => {
-  const cards = useSelector(store => store.orders.deliveries, shallowEqual);
+  const cards = useSelector(store => store.sales.orders.deliveries, shallowEqual);
   const dispatch = useDispatch();
   React.useEffect(
     () => {
@@ -92,13 +92,13 @@ const DeliveriesLine = ({ selectedCard, setSelectedCard }) => {
   );
 };
 
-const OrdersDashboard = ({}) => {
+const OrdersDashboard = () => {
   const [selectedCard, setSelectedCard] = React.useState({});
   const lineProps = { selectedCard, setSelectedCard };
 
   return (
     <>
-      <Header />
+      <Header/>
       <div
         className="ui clearing divider"
         style={{boderTop: 'rgba(208, 212, 216, 0.15)', margin: 0 }}

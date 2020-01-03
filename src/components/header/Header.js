@@ -17,7 +17,7 @@ const columnStyle = {
   // height: '100%',
 };
 
-const Header = (props) => (
+const Header = () => (
   <div style={ gridContainerStyle }>
     <div className='ui centered grid' style={ gridStyle }>
       <div className='four wide column' style={ columnStyle }>
@@ -42,11 +42,25 @@ const Header = (props) => (
           Pagos
         </span>
       </div>
-      <div className='eight wide column' style={ columnStyle }>
+      <div className='seven wide column' style={ columnStyle }>
         <div className="ui large icon input" style={{ width: '100%' }}>
           <input type="text" placeholder="Search..." />
           <i className="search icon"></i>
         </div>
+      </div>
+      <div className='one wide column'>
+        <button
+          className="ui button"
+          onClick={() => window.location.href = process.env.REACT_APP_LOGOUT_URL }
+          style={{
+            margin: 0,
+            padding: '1em 0',
+            width: '100%',
+            textAlign: 'center'
+          }}
+        >
+          <i className="sign out alternate icon" style={{ margin: 0 }}></i>
+        </button>
       </div>
     </div>
   </div>

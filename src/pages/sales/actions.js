@@ -1,5 +1,5 @@
 // import API from '../../api';
-import { actions } from './reducer'
+import { actions } from './reducer';
 
 export const loadRequirements = ({ dispatch }) => {
   dispatch({ type: actions.START_REQUIREMENTS_LOAD });
