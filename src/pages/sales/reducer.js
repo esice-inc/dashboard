@@ -83,12 +83,17 @@ function selectedCardReducer(state = selectedCard, action) {
   }
 }
 
-const reducer = combineReducers({
+
+const ordersReducer = combineReducers({
   // isLoading: loadingReducer,
   requirements: requirementsReducer,
   workOrders: workOrdersReducer,
   deliveries: deliveriesReducer,
   selectedCard: selectedCardReducer,
+});
+
+const reducer = combineReducers({
+  orders: ordersReducer,
 });
 
 

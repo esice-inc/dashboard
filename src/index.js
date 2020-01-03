@@ -7,6 +7,7 @@ import 'semantic-ui-css/semantic.css';
 
 // import API from './api';
 import store from './store';
+import { loadUser } from './actions';
 import OrdersDashboard from './pages/sales/OrdersDashboard';
 import PaymentsDashboard from './pages/sales/PaymentsDashboard';
 import Index from './pages/index/Index';
@@ -14,34 +15,60 @@ import Secure from './components/secure/Secure';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
+const secure = (props) => (
+  <CookiesProvider>
+    <Secure {...props}/>
+  </CookiesProvider>
+);
+
 const orders = (props) => {
-  return (
-    <CookiesProvider>
-      <Secure redirectTo={'/'} history={props.history}>
-        <Provider store={store}>
-          <OrdersDashboard {...props} />
-        </Provider>
-      </Secure>
-    </CookiesProvider>
-  );
+  props.redirectTo = '/';
+  props.content = ({ user }) => {
+    loadUser({ dispatch: store.dispatch, user });
+
+    return (
+      <Provider store={store}>
+        <OrdersDashboard/>
+      </Provider>
+    );
+  };
+
+  return secure(props);
 };
 
 const payments = (props) => {
-  return (
-    <CookiesProvider>
-      <Secure redirectTo={'/'} history={props.history}>
-        <Provider store={store}>
-          <PaymentsDashboard {...props} />
-        </Provider>
-      </Secure>
-    </CookiesProvider>
-  );
+  props.redirectTo = '/';
+  props.content = ({ user }) => {
+    loadUser({ dispatch: store.dispatch, user });
+
+    return (
+      <Provider store={store}>
+        <PaymentsDashboard/>
+      </Provider>
+    );
+  };
+
+  return secure(props);
 };
 
 const index = (props) => {
-  return (
-    <Index {...props} loginURL={process.env.REACT_APP_LOGIN_URL}/>
-  );
+  props.redirectTo = null;
+  props.content = ({ user }) => {
+
+    if (user) {
+      // This should show a menu instead of redirect
+      console.log(user);
+      props.history.replace('/orders');
+    }
+
+    return (
+      <Provider store={store}>
+        <Index loginURL={process.env.REACT_APP_LOGIN_URL}/>
+      </Provider>
+    );
+  };
+
+  return secure(props);
 };
 
 ReactDOM.render(
